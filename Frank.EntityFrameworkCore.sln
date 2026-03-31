@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frank.EntityFrameworkCore.Audit", "Frank.EntityFrameworkCore.Audit\Frank.EntityFrameworkCore.Audit.csproj", "{D66B5D39-C285-4F7E-BB05-87FA59A51144}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,5 +35,9 @@ Global
 		{424C642C-9D76-4B77-B802-8BEF42189FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{424C642C-9D76-4B77-B802-8BEF42189FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{424C642C-9D76-4B77-B802-8BEF42189FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66B5D39-C285-4F7E-BB05-87FA59A51144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66B5D39-C285-4F7E-BB05-87FA59A51144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66B5D39-C285-4F7E-BB05-87FA59A51144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66B5D39-C285-4F7E-BB05-87FA59A51144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

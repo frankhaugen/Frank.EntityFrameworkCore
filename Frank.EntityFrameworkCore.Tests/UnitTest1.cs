@@ -49,8 +49,8 @@ public class UnitTest1
     private static TestContext CreateContext(IServiceProvider serviceProvider)
     {
         var context = new DbContextBuilder<TestContext>()
-            .WithLoggerProvider(serviceProvider.GetRequiredService<ILoggerProvider>())
-            .WithOptions(options => options.UseSqlite("Data Source=MyDb.db"))
+            .WithLoggerFactory(serviceProvider.GetRequiredService<ILoggerFactory>())
+            .WithOptions(options => options.UseSqlite("Data Source=MyDb.db").EnableSensitiveDataLogging().EnableDetailedErrors())
             .Build();
         
         context.Database.EnsureCreated();
@@ -79,16 +79,22 @@ public class UnitTest1
 internal class DbContextBuilder<T> where T : DbContext
 {
     private readonly DbContextOptionsBuilder<T> _optionsBuilder = new();
-
+    
+    public DbContextBuilder<T> WithLoggerProvider(ILoggerProvider loggerProvider)
+    {
+        _optionsBuilder.UseLoggerFactory(new LoggerFactory(new List<ILoggerProvider>(){loggerProvider}));
+        return this;
+    }
+    
+    public DbContextBuilder<T> WithLoggerFactory(ILoggerFactory loggerFactory)
+    {
+        _optionsBuilder.UseLoggerFactory(loggerFactory);
+        return this;
+    }
+    
     public DbContextBuilder<T> WithOptions(Action<DbContextOptionsBuilder<T>> options)
     {
         options(_optionsBuilder);
-        return this;
-    }
-
-    public DbContextBuilder<T> WithLoggerProvider(ILoggerProvider loggerProvider)
-    {
-        _optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddProvider(loggerProvider)));
         return this;
     }
 
